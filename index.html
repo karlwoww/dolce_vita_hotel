@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dolce Vita — отель в Кирове</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary: #8B6B4A;
+    --primary-light: #A8825E;
+    --primary-dark: #6B4F35;
+    --bg: #FDF9F5;
+    --bg-light: #F5EDE4;
+    --text: #3D2B1F;
+    --text-light: #6B5544;
+    --dark: #2D1F14;
+    --white: #FFFFFF;
+    --shadow: 0 20px 40px rgba(0,0,0,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .section-label{
+    display:inline-block;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:13px;
+    color:var(--primary);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .section-title{
+    font-size:clamp(28px,3.5vw,40px);
+    font-weight:700;
+    color:var(--text);
+    margin-bottom:16px;
+    letter-spacing:-0.5px;
+  }
+  .divider{width:50px;height:3px;background:var(--primary);margin:0 auto 20px;}
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(45,31,20,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    padding:14px 24px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .logo{font-size:26px;font-weight:700;color:var(--primary-light);letter-spacing:-0.5px;}
+  .logo span{color:var(--white);}
+  .header-phone{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .phone-item{display:flex;align-items:center;gap:8px;}
+  .phone-item .phone-icon{font-size:16px;color:var(--primary-light);}
+  .phone-item a{font-size:16px;font-weight:500;color:var(--white);transition:color .3s;white-space:nowrap;}
+  .phone-item a:hover{color:var(--primary-light);}
+  .phone-divider{color:rgba(255,255,255,0.15);}
+
+  /* ===== HERO — ТЕКСТ СЛЕВА, ФОТО СПРАВА ===== */
+  .hero{
+    min-height:85vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    background:var(--bg);
+    padding:40px 0;
+  }
+
+  .hero-content{
+    padding:40px 60px 40px 40px;
+    max-width:600px;
+    justify-self:end;
+  }
+
+  .hero-label{
+    display:inline-block;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+    color:var(--primary);
+    font-weight:600;
+    margin-bottom:12px;
+  }
+
+  .hero h1{
+    font-size:clamp(36px,4.5vw,52px);
+    font-weight:700;
+    color:var(--text);
+    line-height:1.1;
+    margin-bottom:12px;
+    letter-spacing:-0.5px;
+  }
+
+  .hero h1 span{
+    color:var(--primary);
+  }
+
+  .hero .hero-address{
+    font-size:clamp(14px,1.2vw,18px);
+    color:var(--text-light);
+    font-weight:400;
+    margin-bottom:20px;
+    letter-spacing:1px;
+  }
+
+  .hero p{
+    font-size:clamp(15px,1.4vw,18px);
+    color:var(--text-light);
+    max-width:480px;
+    margin-bottom:32px;
+    line-height:1.8;
+  }
+
+  .btn{
+    display:inline-block;
+    padding:15px 44px;
+    background:var(--primary);
+    color:var(--white);
+    font-weight:600;
+    font-size:15px;
+    border-radius:6px;
+    transition:all .3s ease;
+    border:none;
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .btn:hover{
+    background:var(--primary-light);
+    transform:translateY(-2px);
+    box-shadow:0 10px 28px rgba(139,107,74,0.35);
+  }
+
+  .hero-image{
+    height:85vh;
+    min-height:500px;
+    background:url('images/XXXL (1).jpg') center/cover no-repeat;
+    border-radius:0 0 0 60px;
+    box-shadow:-10px 0 40px rgba(0,0,0,0.08);
+  }
+
+  /* Если фото лежит в корне, а не в images/ — используйте этот вариант */
+  /* .hero-image{ background:url('XXXL (1).jpg') center/cover no-repeat; } */
+
+  .about{
+    padding:80px 0 60px;
+    background:var(--bg);
+    text-align:center;
+  }
+  .about .container{max-width:820px;}
+  .about p{
+    font-size:17px;
+    color:var(--text-light);
+    font-weight:400;
+    line-height:1.8;
+    text-align:left;
+  }
+  .about .about-text{text-align:left;max-width:760px;margin:0 auto;}
+
+  .features{
+    padding:70px 0;
+    background:var(--bg-light);
+    text-align:center;
+  }
+  .features-header{margin-bottom:40px;}
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .feature-card{
+    background:var(--bg);
+    border-radius:8px;
+    padding:28px 16px;
+    transition:transform .3s ease,box-shadow .3s ease;
+    border:1px solid #e8d9cc;
+  }
+  .feature-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 28px rgba(0,0,0,0.06);
+    border-color:var(--primary);
+  }
+  .feature-icon{font-size:28px;margin-bottom:10px;display:block;}
+  .feature-card h3{font-size:15px;font-weight:500;color:var(--text);}
+
+  .gallery{
+    padding:80px 0;
+    background:var(--dark);
+    text-align:center;
+  }
+  .gallery .section-title{color:var(--white);}
+  .gallery .section-label{color:var(--primary-light);}
+  .slider-wrapper{
+    position:relative;
+    max-width:1100px;
+    margin:40px auto 0;
+    overflow:hidden;
+    border-radius:10px;
+    box-shadow:0 16px 50px rgba(0,0,0,0.5);
+  }
+  .slider-track{display:flex;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;}
+  .slide{min-width:100%;
+  height:480px;
+  background-size:contain;
+  background-position:center
+  ;background-repeat:no-repeat
+  ;flex-shrink:0;}
+  .slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(45,31,20,0.8);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.12);
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all 0.3s ease;
+    z-index:10;
+  }
+  .slider-btn:hover{
+    background:var(--primary);
+    color:var(--white);
+    border-color:var(--primary);
+  }
+  .slider-btn.prev{left:14px;}
+  .slider-btn.next{right:14px;}
+  .slider-dots{display:flex;justify-content:center;gap:10px;margin-top:20px;}
+  .dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.2);
+    cursor:pointer;
+    transition:all 0.3s ease;
+  }
+  .dot.active{background:var(--primary-light);transform:scale(1.2);}
+  .dot:hover{background:var(--primary-light);}
+
+  .contacts{
+    padding:80px 0;
+    background:var(--bg);
+  }
+  .contacts-wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
+  .contact-line{
+    display:flex;
+    gap:14px;
+    margin-bottom:16px;
+    align-items:flex-start;
+    font-size:16px;
+  }
+  .contact-line .ic{
+    color:var(--primary);
+    font-size:18px;
+    margin-top:2px;
+  }
+  .contact-line a{
+    color:var(--text);
+    transition:color .3s;
+    font-weight:500;
+  }
+  .contact-line a:hover{color:var(--primary);}
+  .map-frame{
+    width:100%;
+    height:360px;
+    border:none;
+    border-radius:8px;
+    box-shadow:var(--shadow);
+  }
+
+  footer{
+    background:var(--dark);
+    color:#b8a594;
+    padding:32px 0;
+    text-align:center;
+    font-size:14px;
+  }
+  footer .footer-logo{
+    color:var(--primary-light);
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  footer .footer-contacts{
+    margin-top:6px;
+    font-size:13px;
+    color:#7a6656;
+  }
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;padding:60px 0 0;}
+    .hero-content{padding:0 24px 40px;max-width:100%;justify-self:center;text-align:center;}
+    .hero p{margin:0 auto 32px;}
+    .hero-image{height:50vh;min-height:300px;border-radius:0;}
+    .features-grid{grid-template-columns:repeat(2,1fr);}
+    .contacts-wrap{grid-template-columns:1fr;}
+    .slide{height:360px;}
+  }
+
+  @media(max-width:700px){
+    .header-phone{flex-direction:column;align-items:flex-start;gap:4px;}
+    .phone-divider{display:none;}
+    .phone-item a{font-size:14px;}
+  }
+
+  @media(max-width:600px){
+    .header-inner{flex-direction:column;align-items:flex-start;}
+    .header-phone{width:100%;}
+    .features-grid{grid-template-columns:1fr;}
+    .hero-content{padding:0 16px 32px;}
+    .hero h1{font-size:30px;}
+    .section-title{font-size:26px;}
+    .slide{height:240px;}
+    .slider-btn{width:34px;height:34px;font-size:15px;}
+    .slider-btn.prev{left:8px;}
+    .slider-btn.next{right:8px;}
+    .about p{font-size:15px;}
+    .hero-image{height:40vh;min-height:220px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div><div class="logo">Dolce <span>Vita</span></div></div>
+    <div class="header-phone">
+      <div class="phone-item">
+        <span class="phone-icon">☏</span>
+        <a href="tel:+78334445252">44-52-52</a>
+      </div>
+      <span class="phone-divider">|</span>
+      <div class="phone-item">
+        <span class="phone-icon">📱</span>
+        <a href="tel:+79127345252">8-912-734-52-52</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ГЕРОЙ: ТЕКСТ СЛЕВА | ФОТО СПРАВА ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-label">Добро пожаловать</span>
+    <h1>Отель <span>Dolce Vita</span></h1>
+    <div class="hero-address">г. Киров, ул. Сурикова, 14</div>
+    <p>Уютные номера в центре города. Бесплатный Wi-Fi, завтрак и парковка. Всё для вашего спокойного отдыха.</p>
+    <a href="#contacts" class="btn">Забронировать по номеру</a>
+  </div>
+  <div class="hero-image"></div>
+</section>
+
+<section class="about">
+  <div class="container">
+    <span class="section-label">О нас</span>
+    <div class="divider"></div>
+    <h2 class="section-title">Гостиница в центре города</h2>
+    <div class="about-text">
+      <p>Мы находимся прямо в центре Кирова, на улице Сурикова, 14. До железнодорожного и автовокзала — 10–15 минут пешком, до аэропорта — 15 минут на машине. Вокруг магазины, кафе, остановки — всё под рукой.</p>
+      <p style="margin-top:16px;">Номера чистые, в каждом свой санузел, телевизор и Wi-Fi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="features-header">
+      <span class="section-label">Что мы предлагаем</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Всё необходимое для отдыха</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card"><span class="feature-icon">🥐</span><h3>Завтрак бесплатно</h3></div>
+      <div class="feature-card"><span class="feature-icon">🚿</span><h3>Санузел в номере</h3></div>
+      <div class="feature-card"><span class="feature-icon">🛁</span><h3>Два номера с джакузи</h3></div>
+      <div class="feature-card"><span class="feature-icon">📶</span><h3>Бесплатный Wi-Fi</h3></div>
+      <div class="feature-card"><span class="feature-icon">📺</span><h3>Цифровое ТВ</h3></div>
+      <div class="feature-card"><span class="feature-icon">🚌</span><h3>Рядом с вокзалами</h3></div>
+      <div class="feature-card"><span class="feature-icon">✈️</span><h3>Недалеко от аэропорта</h3></div>
+      <div class="feature-card"><span class="feature-icon">🏙️</span><h3>Центр города</h3></div>
+      <div class="feature-card"><span class="feature-icon">🕑</span><h3>Заезд круглосуточно</h3></div>
+      <div class="feature-card"><span class="feature-icon">🚗</span><h3>Бесплатная парковка</h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <span class="section-label">Фотографии</span>
+    <div class="divider"></div>
+    <h2 class="section-title">Как выглядит отель</h2>
+  </div>
+  <div class="slider-wrapper">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide" style="background-image:url('images/1.jpg')"></div>
+      <div class="slide" style="background-image:url('images/XXXL (2).webp')"></div>
+      <div class="slide" style="background-image:url('images/2.jpg')"></div>
+      <div class="slide" style="background-image:url('images/XXXL (1).webp')"></div>
+      <div class="slide" style="background-image:url('images/5.jpg')"></div>
+      <div class="slide" style="background-image:url('images/6.jpg')"></div>
+    </div>
+    <button class="slider-btn prev" id="prevBtn">‹</button>
+    <button class="slider-btn next" id="nextBtn">›</button>
+  </div>
+  <div class="slider-dots" id="dotsContainer"></div>
+</section>
+
+<section class="contacts" id="contacts">
+  <div class="container">
+    <span class="section-label">Контакты</span>
+    <div class="divider"></div>
+    <h2 class="section-title">Как нас найти</h2>
+    <div class="contacts-wrap">
+      <div class="contacts-info">
+        <div class="contact-line">
+          <span class="ic">📍</span>
+          <span>г. Киров, ул. Сурикова, 14</span>
+        </div>
+        <div class="contact-line">
+          <span class="ic">☏</span>
+          <a href="tel:+78334445252">т. 44-52-52</a>
+        </div>
+        <div class="contact-line">
+          <span class="ic">📱</span>
+          <a href="tel:+79127345252">8-912-734-52-52</a>
+        </div>
+        <div class="contact-line">
+          <span class="ic">✉️</span>
+          <a href="mailto:diana200972@mail.ru">diana200972@mail.ru</a>
+        </div>
+      </div>
+      <iframe class="map-frame" src="https://yandex.ru/map-widget/v1/?text=Киров%2C%20улица%20Сурикова%2C%2014" allowfullscreen="true"></iframe>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">Dolce Vita</div>
+  <div>© 2026 Гостиница Dolce Vita, Киров</div>
+  <div class="footer-contacts">ул. Сурикова, 14 · 44-52-52 · 8-912-734-52-52</div>
+</footer>
+
+<script>
+  (function(){
+    const track=document.getElementById('sliderTrack');
+    const slides=track.querySelectorAll('.slide');
+    const totalSlides=slides.length;
+    let currentIndex=0;
+    let isTransitioning=false;
+    const dotsContainer=document.getElementById('dotsContainer');
+    for(let i=0;i<totalSlides;i++){
+      const dot=document.createElement('div');
+      dot.classList.add('dot');
+      if(i===0)dot.classList.add('active');
+      dot.dataset.index=i;
+      dot.addEventListener('click',function(){goToSlide(parseInt(this.dataset.index));});
+      dotsContainer.appendChild(dot);
+    }
+    const dots=dotsContainer.querySelectorAll('.dot');
+    function goToSlide(index){
+      if(isTransitioning||index===currentIndex)return;
+      isTransitioning=true;
+      currentIndex=index;
+      track.style.transform='translateX(-'+currentIndex*100+'%)';
+      dots.forEach((dot,i)=>{dot.classList.toggle('active',i===currentIndex);});
+      setTimeout(()=>{isTransitioning=false;},600);
+    }
+    function nextSlide(){goToSlide((currentIndex+1)%totalSlides);}
+    function prevSlide(){goToSlide((currentIndex-1+totalSlides)%totalSlides);}
+    document.getElementById('nextBtn').addEventListener('click',nextSlide);
+    document.getElementById('prevBtn').addEventListener('click',prevSlide);
+    document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')nextSlide();if(e.key==='ArrowLeft')prevSlide();});
+    let touchStartX=0;
+    const wrapper=document.querySelector('.slider-wrapper');
+    wrapper.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX;},{passive:true});
+    wrapper.addEventListener('touchend',function(e){const diff=touchStartX-e.changedTouches[0].screenX;if(Math.abs(diff)>50){diff>0?nextSlide():prevSlide();}},{passive:true});
+    let autoSlide=setInterval(nextSlide,5000);
+    wrapper.addEventListener('mouseenter',()=>clearInterval(autoSlide));
+    wrapper.addEventListener('mouseleave',()=>{autoSlide=setInterval(nextSlide,5000);});
+  })();
+</script>
+</body>
+</html>
